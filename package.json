@@ -6,7 +6,7 @@
     "access": "public"
   },
   "files": [
-    "src"
+    "components"
   ],
   "license": "MIT",
   "dependencies": {},
