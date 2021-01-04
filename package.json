@@ -1,0 +1,24 @@
+{
+  "name": "@zepben/docusaurus-components",
+  "version": "0.1.0",
+  "description": "Zepben reusable docusaurus components",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "@docusaurus/core": "^2.0.0-alpha.70"
+  },
+  "engines": {
+    "node": ">=10.15.1"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}
