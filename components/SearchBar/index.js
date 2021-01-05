@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory } from "@docusaurus/router";
@@ -6,7 +6,6 @@ import Link from "@docusaurus/Link";
 import Head from "@docusaurus/Head";
 import useSearchQuery from "@theme/hooks/useSearchQuery";
 import { DocSearchButton, useDocSearchKeyboardEvents } from "@docsearch/react";
-import useAlgoliaContextualFacetFilters from "@theme/hooks/useAlgoliaContextualFacetFilters";
 
 let DocSearchModal = null;
 
@@ -24,25 +23,8 @@ function ResultsFooter({ state, onClose }) {
   );
 }
 
-function DocSearch({ contextualSearch, ...props }) {
+function DocSearch(props) {
   const { siteMetadata } = useDocusaurusContext();
-
-  const contextualSearchFacetFilters = useAlgoliaContextualFacetFilters();
-
-  const configFacetFilters = props.searchParameters?.facetFilters ?? [];
-
-  const facetFilters = contextualSearch
-    ? // Merge contextual search filters with config filters
-      [...contextualSearchFacetFilters, ...configFacetFilters]
-    : // ... or use config facetFilters
-      configFacetFilters;
-
-  // we let user override default searchParameters if he wants to
-  const searchParameters = {
-    ...props.searchParameters,
-    facetFilters,
-  };
-
   const history = useHistory();
   const searchButtonRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -83,8 +65,8 @@ function DocSearch({ contextualSearch, ...props }) {
   );
 
   const navigator = useRef({
-    navigate({ itemUrl }) {
-      history.push(itemUrl);
+    navigate({ suggestionUrl }) {
+      history.push(suggestionUrl);
     },
   }).current;
 
@@ -133,7 +115,7 @@ function DocSearch({ contextualSearch, ...props }) {
         <link
           rel="preconnect"
           href={`https://${props.appId}-dsn.algolia.net`}
-          crossOrigin="anonymous"
+          crossOrigin
         />
       </Head>
 
@@ -157,7 +139,6 @@ function DocSearch({ contextualSearch, ...props }) {
             resultsFooterComponent={resultsFooterComponent}
             transformSearchClient={transformSearchClient}
             {...props}
-            searchParameters={searchParameters}
           />,
           document.body
         )}
