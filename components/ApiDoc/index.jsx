@@ -26,7 +26,7 @@ const Ui = ({specUrl, documentUrl}) => {
         formattedSpecUrl = useBaseUrl(["spec", match[1], specUrl].join("/"));
     } else {
         const lastVersion = find(globalData["docusaurus-plugin-content-docs"].default.versions, v => v.isLast === true);
-        formattedSpecUrl = useBaseUrl(["spec", lastVersion.name, specUrl].join("/"));
+        formattedSpecUrl = useBaseUrl(["spec", lastVersion.name === "current" ? "next": lastVersion.name, specUrl].join("/"));
     }
 
     useEffect(() => {
