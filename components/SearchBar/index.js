@@ -66,7 +66,7 @@ function DocSearch(props) {
 
   const navigator = useRef({
     navigate({ suggestionUrl }) {
-      history.push(suggestionUrl);
+      window.location.assign(suggestionUrl);
     },
   }).current;
 
