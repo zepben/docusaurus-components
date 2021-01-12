@@ -1,6 +1,6 @@
 {
   "name": "@zepben/docusaurus-components",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Zepben reusable docusaurus components",
   "publishConfig": {
     "access": "public"
@@ -9,7 +9,9 @@
     "components"
   ],
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "swagger-ui": "3.39.0"
+  },
   "peerDependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
