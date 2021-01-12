@@ -30,18 +30,20 @@ const Ui = ({specUrl, documentUrl}) => {
     }
 
     useEffect(() => {
-        const containerId = `swagger-ui`;
-        if (!document.getElementById(containerId)) {
-            const swaggerContainer = document.createElement("div");
-            swaggerContainer.id = containerId;
-            document.getElementById("api-doc").appendChild(swaggerContainer);
-            SwaggerUI({
-                url: formattedSpecUrl,
-                dom_id: `#${containerId}`,
-                defaultModelsExpandDepth: 1,
-                docExpansion: "list",
-            });
-        }
+        setTimeout(() => {
+            const containerId = `swagger-ui`;
+            if (!document.getElementById(containerId)) {
+                const swaggerContainer = document.createElement("div");
+                swaggerContainer.id = containerId;
+                document.getElementById("api-doc").appendChild(swaggerContainer);
+                SwaggerUI({
+                    url: formattedSpecUrl,
+                    dom_id: `#${containerId}`,
+                    defaultModelsExpandDepth: 1,
+                    docExpansion: "list",
+                });
+            }
+        }, 500);
     }, []);
 
     return <div id={"api-doc"}/>
