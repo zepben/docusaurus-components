@@ -19,14 +19,16 @@ const Ui = ({specUrl, documentUrl}) => {
     const {siteConfig} = useDocusaurusContext();
     const globalData = useGlobalData();
 
-    const regex = RegExp(`${siteConfig.baseUrl}(.*)${documentUrl}`, 'g');
-    const match = regex.exec(window.location.href);
     let formattedSpecUrl;
-    if (match != null) {
-        formattedSpecUrl = useBaseUrl(["spec", match[1], specUrl].join("/"));
-    } else {
-        const lastVersion = find(globalData["docusaurus-plugin-content-docs"].default.versions, v => v.isLast === true);
-        formattedSpecUrl = useBaseUrl(["spec", lastVersion.name === "current" ? "next": lastVersion.name, specUrl].join("/"));
+    if (typeof window !== "undefined") {
+        const regex = RegExp(`${siteConfig.baseUrl}(.*)${documentUrl}`, 'g');
+        const match = regex.exec(window.location.href);
+        if (match != null) {
+            formattedSpecUrl = useBaseUrl(["spec", match[1], specUrl].join("/"));
+        } else {
+            const lastVersion = find(globalData["docusaurus-plugin-content-docs"].default.versions, v => v.isLast === true);
+            formattedSpecUrl = useBaseUrl(["spec", lastVersion.name === "current" ? "next": lastVersion.name, specUrl].join("/"));
+        }
     }
 
     useEffect(() => {
