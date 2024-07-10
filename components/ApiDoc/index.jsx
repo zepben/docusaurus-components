@@ -6,6 +6,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// @ts-check
+
 import React, {useEffect} from "react";
 import "swagger-ui/dist/swagger-ui.css";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
