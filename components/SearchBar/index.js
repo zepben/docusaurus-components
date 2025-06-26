@@ -6,7 +6,7 @@ import {useBaseUrlUtils} from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
 import {isRegexpStringMatch} from '@docusaurus/theme-common';
-import {useSearchPage} from '@docusaurus/theme-common/internal';
+import {useSearchLinkCreator} from '@docusaurus/theme-common';
 import {DocSearchButton, useDocSearchKeyboardEvents} from '@docsearch/react';
 import {useAlgoliaContextualFacetFilters} from '@docusaurus/theme-search-algolia/client';
 import Translate from '@docusaurus/Translate';
@@ -16,9 +16,8 @@ function Hit({hit, children}) {
   return <Link to={hit.url}>{children}</Link>;
 }
 function ResultsFooter({state, onClose}) {
-  const {generateSearchPageLink} = useSearchPage();
   return (
-    <Link to={generateSearchPageLink(state.query)} onClick={onClose}>
+    <Link to={useSearchLinkCreator(state.query)} onClick={onClose}>
       <Translate
         id="theme.SearchBar.seeAll"
         values={{count: state.context.nbHits}}>

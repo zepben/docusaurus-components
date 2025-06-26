@@ -1,6 +1,6 @@
 {
   "name": "@zepben/docusaurus-components",
-  "version": "0.9.1",
+  "version": "0.9.1-testingcomponents",
   "description": "Zepben reusable docusaurus components",
   "publishConfig": {
     "access": "public"
