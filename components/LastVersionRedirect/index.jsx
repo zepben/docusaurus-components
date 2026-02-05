@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import "swagger-ui/dist/swagger-ui.css";
+import "swagger-ui-react/dist/swagger-ui.css";
 import useGlobalData from "@docusaurus/useGlobalData";
 import { find } from "lodash";
 import { Redirect } from "@docusaurus/router";
