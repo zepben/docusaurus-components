@@ -58,7 +58,7 @@ const MainContent = ({ items }: Props) => (
                         </div>
                         <div className="row">
                             {items.map((t) => (
-                                <div key={t.title} className="col col--6 margin-bottom--lg">
+                                <div key={t.title} className="col col--4 margin-bottom--lg">
                                     <div className={clsx("card", styles.showcaseItem)}>
                                         <div className="card__body">
                                             <div className="avatar">
